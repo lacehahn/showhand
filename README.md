@@ -1,84 +1,84 @@
 # Showhand - Real Estate Search Demo
 
-这是一个房地产搜索演示项目，使用 Next.js 和 Express 构建。
+This is a real estate search demo project built with Next.js and Express.
 
-## 项目结构
+## Project Structure
 
 ```
 showhand/
-├── backend/                 # Express 后端
+├── backend/                 # Express backend
 │   ├── src/
-│   │   ├── data/           # 数据文件
-│   │   └── index.ts        # 服务器入口
+│   │   ├── data/           # Data files
+│   │   └── index.ts        # Server entry
 │   └── package.json
 │
-└── frontend/               # Next.js 前端
+└── frontend/               # Next.js frontend
     ├── src/
-    │   ├── app/           # 页面组件
-    │   ├── services/      # API 服务
-    │   └── types/         # 类型定义
+    │   ├── app/           # Page components
+    │   ├── services/      # API services
+    │   └── types/         # Type definitions
     └── package.json
 ```
 
-## 环境要求
+## Requirements
 
 - Node.js 18+
 - npm 9+
 
-## 安装
+## Installation
 
-1. 克隆项目
+1. Clone the project
 ```bash
 git clone <repository-url>
 cd showhand
 ```
 
-2. 安装所有依赖
+2. Install all dependencies
 ```bash
 npm run install:all
 ```
 
-3. 配置环境变量
-在 frontend 目录下创建 `.env.local` 文件：
+3. Configure environment variables
+Create a `.env.local` file in the frontend directory:
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3001/api
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
 ```
 
-## 开发
+## Development
 
-启动开发服务器（同时运行前端和后端）：
+Start the development server (runs both frontend and backend):
 ```bash
 npm start
 ```
 
-前端将在 http://localhost:3000 运行
-后端将在 http://localhost:3001 运行
+Frontend will run at http://localhost:3000
+Backend will run at http://localhost:3001
 
-## 构建
+## Build
 
-构建生产版本：
+Build for production:
 ```bash
 npm run build
 ```
 
-## 功能
+## Features
 
-- 房产搜索
-- 房产详情查看
-- 地图显示
-- 响应式设计
+- Real estate search
+- Property details view
+- Map display
+- Responsive design
 
-## 技术栈
+## Tech Stack
 
-前端：
+Frontend:
 - Next.js
 - TypeScript
 - Material-UI
 - Google Maps React
 - Tailwind CSS
 
-后端：
+Backend:
 - Express
 - TypeScript
 - CORS
