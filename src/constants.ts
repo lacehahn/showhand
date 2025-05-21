@@ -1,1 +1,0 @@
-export const LEFT_PANE_WIDTH = 300;
