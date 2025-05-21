@@ -1,46 +1,84 @@
-# Getting Started with Create React App
+# Showhand - Real Estate Search Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+这是一个房地产搜索演示项目，使用 Next.js 和 Express 构建。
 
-## Available Scripts
+## 项目结构
 
-In the project directory, you can run:
+```
+showhand/
+├── backend/                 # Express 后端
+│   ├── src/
+│   │   ├── data/           # 数据文件
+│   │   └── index.ts        # 服务器入口
+│   └── package.json
+│
+└── frontend/               # Next.js 前端
+    ├── src/
+    │   ├── app/           # 页面组件
+    │   ├── services/      # API 服务
+    │   └── types/         # 类型定义
+    └── package.json
+```
 
-### `npm start`
+## 环境要求
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node.js 18+
+- npm 9+
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 安装
 
-### `npm test`
+1. 克隆项目
+```bash
+git clone <repository-url>
+cd showhand
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. 安装所有依赖
+```bash
+npm run install:all
+```
 
-### `npm run build`
+3. 配置环境变量
+在 frontend 目录下创建 `.env.local` 文件：
+```
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 开发
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+启动开发服务器（同时运行前端和后端）：
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+前端将在 http://localhost:3000 运行
+后端将在 http://localhost:3001 运行
 
-### `npm run eject`
+## 构建
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+构建生产版本：
+```bash
+npm run build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 功能
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 房产搜索
+- 房产详情查看
+- 地图显示
+- 响应式设计
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 技术栈
 
-## Learn More
+前端：
+- Next.js
+- TypeScript
+- Material-UI
+- Google Maps React
+- Tailwind CSS
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+后端：
+- Express
+- TypeScript
+- CORS
