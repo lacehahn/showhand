@@ -13,9 +13,9 @@ function REDetail() {
   const [selectedNearbyId, setSelectedNearbyId ] = useState<number|undefined>();
   const { reid } = useParams();
   var target = data.targetInfo['ロイヤルシーズン南麻布']
-  for (let [key, value] of Object.entries(data.targetInfo)) {
+  for (const [, value] of Object.entries(data.targetInfo)) {
     // @ts-ignore
-    if(value['id'] == reid) {
+    if(value['id'] === reid) {
       target = value
     }
   }

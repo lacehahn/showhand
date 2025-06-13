@@ -1,4 +1,4 @@
-import react, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -36,12 +36,11 @@ interface TypefiltersProps {
 }
 
 export default function TypeFilters({ nearbys } : TypefiltersProps) {
-
   return (
     <List>
       {
         filters.map((type) => (
-          <TypeFilter type={type} key={type} nearbys={nearbys.filter((nearbys)=>nearbys.设施类型 == type) }/>
+          <TypeFilter type={type} key={type} nearbys={nearbys.filter((nearbys)=>nearbys.设施类型 === type) }/>
         ))
       }
     </List>
@@ -54,7 +53,6 @@ interface TypeFilterProps {
 }
 
 function TypeFilter({ type, nearbys } : TypeFilterProps) {
-
   const { selectedTypes, setSelectedTypes, setSelectedNearbyId } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();

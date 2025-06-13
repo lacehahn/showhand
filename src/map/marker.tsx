@@ -1,5 +1,3 @@
-
-import react, { useState, CSSProperties } from 'react';
 import styled from '@emotion/styled';
 import InfoWindow from './infoWindow';
 import { palette1 } from '../colors';
@@ -53,7 +51,7 @@ function renderStars(rating: number) {
 }
 
 export default function Marker(props: MarkerProps) {
-  const isMain = props.type == 'main';
+  const isMain = props.type === 'main';
   return (
     <>
       <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10'}}>
