@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import './App.css';
 import MainMap from './map/mainMap';
 import { AppContext } from './context/AppContext'
 import LeftDrawer from './sidebar/LeftDrawer';
 import Box from '@mui/material/Box';
 import { LEFT_PANE_WIDTH } from './constants';
-import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import data from './data/data.json';
 
 function REDetail() {
   const [selectedTypes, setSelectedTypes] = useState(['レストラン', '学校']);
   const [selectedNearbyId, setSelectedNearbyId ] = useState<number|undefined>();
-  const { reid } = useParams();
+  const router = useRouter();
+  const { reid } = router.query;
   var target = data.targetInfo['ロイヤルシーズン南麻布']
   for (const [, value] of Object.entries(data.targetInfo)) {
     // @ts-ignore

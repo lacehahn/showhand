@@ -2,6 +2,7 @@ import react from 'react';
 import styled from '@emotion/styled';
 import { NearByData } from '../common/model';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 interface InfoWindowProps extends NearByData {
 }
@@ -21,10 +22,15 @@ const InfoWindowBox = styled.div`
 export default function InfoWindow(props: InfoWindowProps) {
   const { id, name, address, type, advanced1, advanced2, advanced3, distance } = props;
   const { t, i18n } = useTranslation();
+  const router = useRouter();
+
+  // Dynamic base path for images
+  const basePath = router.basePath || '';
+  const imagePath = `${basePath}/photos/${id}.png`;
 
   return (
     <InfoWindowBox>
-      <img src={`/showhand/photos/${id}.png`} alt="locationPhoto" style={{ width: '300px', height: '200px' }} />
+      <img src={imagePath} alt="locationPhoto" style={{ width: '300px', height: '200px' }} />
       <div style={{ padding: 10, textAlign: 'left' }}>
         <div style={{ fontSize: 18, fontWeight: 'bold' }}>{name}</div>
         <div style={{ fontSize: 14, color: "black"  }}>
@@ -45,7 +51,6 @@ export default function InfoWindow(props: InfoWindowProps) {
     </InfoWindowBox>
   );
 };
-
 
 function renderIfNonnullAndNonEmpty(str?: string) {
   return (

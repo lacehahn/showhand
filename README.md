@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Showhand - Next.js Version
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+这是一个使用 Next.js 构建的房地产搜索应用程序，可以搜索物件并查看周边设施信息。
 
-## Available Scripts
+## 功能特性
 
-In the project directory, you can run:
+- 物件搜索功能
+- 周边设施地图显示
+- 多语言支持（日语、英语、中文）
+- 设施类型筛选
+- CSV 数据导出
 
-### `npm start`
+## 技术栈
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Next.js 15
+- React 18
+- TypeScript
+- Material-UI
+- Google Maps API
+- i18next (国际化)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 开发环境运行
 
-### `npm test`
+```bash
+# 安装依赖
+npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 启动开发服务器
+npm run dev
 
-### `npm run build`
+# 访问 http://localhost:3000
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 构建和部署
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# 构建静态文件
+npm run build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 构建完成后，静态文件将生成在 out/ 目录中
+```
 
-### `npm run eject`
+## Vercel 部署
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. 将代码推送到 GitHub 仓库
+2. 在 Vercel 中导入项目
+3. Vercel 会自动检测到这是一个 Next.js 项目并进行部署
+4. 项目配置了静态导出，适合在 Vercel 上部署
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 项目结构
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+├── pages/                 # Next.js 页面
+│   ├── _app.tsx          # 应用程序入口
+│   ├── index.tsx         # 首页（搜索页面）
+│   └── redetail/[reid].tsx # 动态路由详情页
+├── src/                   # 源代码
+│   ├── components/        # React 组件
+│   ├── data/             # 数据文件
+│   └── styles/           # 样式文件
+├── public/               # 静态资源
+├── next.config.js        # Next.js 配置
+└── vercel.json          # Vercel 部署配置
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 环境变量
 
-## Learn More
+如果需要使用 Google Maps API，请在 `.env.local` 文件中添加：
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key_here
+```

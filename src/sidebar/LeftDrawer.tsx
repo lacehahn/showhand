@@ -9,7 +9,7 @@ import { LEFT_PANE_WIDTH } from '../constants';
 import { Nearby } from '../data/Nearby';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import LanguagePicker from './LanguagePicker';
 import { useTranslation } from 'react-i18next';
 
@@ -28,14 +28,16 @@ function convertToCSV(jsonArray: any[]): string {
   return [keys.join(',')].concat(lines).join('\r\n');
 }
 
-
 export default function LeftDrawer({ name, address, id }: LeftDrawerProps) {
   const nearbys = data.nearby[name] as unknown as Nearby[]
-  const navigate = useNavigate();
+  const router = useRouter();
   const { t } = useTranslation();
 
-  const handleClick = () => {
+  // Dynamic base path for images
+  const basePath = router.basePath || '';
+  const imagePath = `${basePath}/photos/${id}.png`;
 
+  const handleClick = () => {
     // Convert the JSON object to a Blob
     const csvBlob = new Blob([convertToCSV(data.nearby[name])], { type: 'application/json' });
 
@@ -75,13 +77,13 @@ export default function LeftDrawer({ name, address, id }: LeftDrawerProps) {
             <Typography variant="h6" noWrap={true} component="div">
               Showhand 
             </Typography>
-            <Button onClick={() => navigate(-1)} variant="outlined">{t('Back')}</Button>
+            <Button onClick={() => router.back()} variant="outlined">{t('Back')}</Button>
             <LanguagePicker />
         </Toolbar>
         <Divider />
         <Box sx={{ my: 1, mx: 1 }}>
         <Grid container direction="column" alignItems="center">
-          <Grid item><img src={`/showhand/photos/${id}.png`} alt="locationPhoto" style={{ width: '260px', height: '200px' }} /></Grid>
+          <Grid item><img src={imagePath} alt="locationPhoto" style={{ width: '260px', height: '200px' }} /></Grid>
           <Grid item>
             <Typography variant="h6" noWrap={true} component="div">
               <div>{name}</div>

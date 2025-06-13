@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useTranslation } from 'react-i18next';
@@ -16,11 +16,11 @@ const items: Item[] = [
 ];
 
 const SearchPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { t } = useTranslation();
 
   const handleSelectItem = (event: any, value: Item | null) => {
-    if (value) navigate(`/redetail/${value.id}`);
+    if (value) router.push(`/redetail/${value.id}`);
   };
 
   return (
