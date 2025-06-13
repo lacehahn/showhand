@@ -11,16 +11,28 @@
   ],
   "routes": [
     {
-      "src": "/showhand/static/(.*)",
-      "dest": "/showhand/static/$1"
-    },
-    {
       "src": "/showhand/_next/(.*)",
       "dest": "/showhand/_next/$1"
     },
     {
-      "src": "/showhand/(.*)",
+      "src": "/showhand/photos/(.*)",
+      "dest": "/showhand/photos/$1"
+    },
+    {
+      "src": "/showhand/static/(.*)",
+      "dest": "/showhand/static/$1"
+    },
+    {
+      "src": "/showhand/redetail/(.*)",
+      "dest": "/showhand/redetail/$1.html"
+    },
+    {
+      "src": "/showhand/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))",
       "dest": "/showhand/$1"
+    },
+    {
+      "src": "/showhand/(.*)",
+      "dest": "/showhand/$1.html"
     },
     {
       "src": "/showhand",

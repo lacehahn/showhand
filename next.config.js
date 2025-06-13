@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production'
+
 const nextConfig = {
   reactStrictMode: true,
-  // Commented out for local development
-  // output: 'export',
-  // trailingSlash: true,
-  // basePath: '/showhand',
-  // assetPrefix: '/showhand/',
+  output: 'export',
+  trailingSlash: true,
+  basePath: isProd ? '/showhand' : '',
+  assetPrefix: isProd ? '/showhand/' : '',
   images: {
     unoptimized: true
   }

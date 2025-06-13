@@ -1,4 +1,4 @@
-import react from 'react';
+import react, { useState } from 'react';
 import styled from '@emotion/styled';
 import { NearByData } from '../common/model';
 import { useTranslation } from 'react-i18next';
@@ -23,14 +23,24 @@ export default function InfoWindow(props: InfoWindowProps) {
   const { id, name, address, type, advanced1, advanced2, advanced3, distance } = props;
   const { t, i18n } = useTranslation();
   const router = useRouter();
+  const [imageError, setImageError] = useState(false);
 
   // Dynamic base path for images
   const basePath = router.basePath || '';
-  const imagePath = `${basePath}/photos/${id}.png`;
+  const imagePath = imageError ? `${basePath}/photos/placeholder.png` : `${basePath}/photos/${id}.png`;
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   return (
     <InfoWindowBox>
-      <img src={imagePath} alt="locationPhoto" style={{ width: '300px', height: '200px' }} />
+      <img 
+        src={imagePath} 
+        alt="locationPhoto" 
+        style={{ width: '300px', height: '200px' }} 
+        onError={handleImageError}
+      />
       <div style={{ padding: 10, textAlign: 'left' }}>
         <div style={{ fontSize: 18, fontWeight: 'bold' }}>{name}</div>
         <div style={{ fontSize: 14, color: "black"  }}>

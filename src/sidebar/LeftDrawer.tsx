@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 import LanguagePicker from './LanguagePicker';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 interface LeftDrawerProps {
   name: string,
@@ -32,10 +33,15 @@ export default function LeftDrawer({ name, address, id }: LeftDrawerProps) {
   const nearbys = data.nearby[name] as unknown as Nearby[]
   const router = useRouter();
   const { t } = useTranslation();
+  const [imageError, setImageError] = useState(false);
 
   // Dynamic base path for images
   const basePath = router.basePath || '';
-  const imagePath = `${basePath}/photos/${id}.png`;
+  const imagePath = imageError ? `${basePath}/photos/placeholder.png` : `${basePath}/photos/${id}.png`;
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   const handleClick = () => {
     // Convert the JSON object to a Blob
@@ -83,7 +89,14 @@ export default function LeftDrawer({ name, address, id }: LeftDrawerProps) {
         <Divider />
         <Box sx={{ my: 1, mx: 1 }}>
         <Grid container direction="column" alignItems="center">
-          <Grid item><img src={imagePath} alt="locationPhoto" style={{ width: '260px', height: '200px' }} /></Grid>
+          <Grid item>
+            <img 
+              src={imagePath} 
+              alt="locationPhoto" 
+              style={{ width: '260px', height: '200px' }} 
+              onError={handleImageError}
+            />
+          </Grid>
           <Grid item>
             <Typography variant="h6" noWrap={true} component="div">
               <div>{name}</div>
